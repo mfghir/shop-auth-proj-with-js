@@ -1,4 +1,4 @@
-import { removeModal, showModal } from "./utils/modal.js";
+import { removeModal, showModal } from "./modal.js";
 
 const BASE_URL = "https://fakestoreapi.com";
 const modalButton = document.getElementById("modal-button");
@@ -13,7 +13,7 @@ const postData = async (path, data) => {
     const json = await response.json();
     return json;
   } catch (error) {
-    showModal(error.message);
+    showModal("an error occurred");
   }
 };
 
