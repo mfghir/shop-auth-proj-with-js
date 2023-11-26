@@ -13,7 +13,8 @@ const postData = async (path, data) => {
     const json = await response.json();
     return json;
   } catch (error) {
-    showModal("an error occurred");
+    // showModal("an error occurred");
+    alert("an error occurred");
   }
 };
 
