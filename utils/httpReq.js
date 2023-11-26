@@ -18,5 +18,15 @@ const postData = async (path, data) => {
   }
 };
 
+const getData = async (path) => {
+  try {
+    const response = await fetch(`${BASE_URL}/${path}`);
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    alert("an error occurred");
+  }
+};
+
 modalButton.addEventListener("click", removeModal);
-export { postData };
+export { postData, getData };
