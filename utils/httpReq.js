@@ -14,7 +14,6 @@ const postData = async (path, data) => {
     return json;
   } catch (error) {
     showModal("an error occurred");
-    // alert("an error occurred");
   }
 };
 
@@ -25,9 +24,8 @@ const getData = async (path) => {
     return json;
   } catch (error) {
     showModal("an error occurred");
-    // alert("an error occurred");
   }
 };
 
-modalButton.addEventListener("click", removeModal);
+modalButton?.addEventListener("click", removeModal);
 export { postData, getData };

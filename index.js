@@ -12,31 +12,31 @@ const mainContent = document.getElementById("products");
 
 const searchButton = document.querySelector("button");
 const inputBox = document.querySelector("input");
-const listItem = document.querySelectorAll("li");
+const listItems = document.querySelectorAll("li");
 
 const renderProducts = (products) => {
   mainContent.innerHTML = "";
+
   products.forEach((product) => {
     const jsx = `
     <div>
-        <img src=${product.image} alt=${product.title} />
-        <h4>${shortenText(product.title)}</h4>
-        <div id="price">
-            <p>$ ${product.price}</p>
-            <button>
-                Buy
-                <i class="fa-solid fa-cart-shopping"></i>            
+      <img src=${product.image} alt=${product.title} />
+      <h4>${shortenText(product.title)}</h4>
+      <div id="price">
+        <p>$ ${product.price}</p>
+          <button>
+            Buy
+            <i class="fa-solid fa-cart-shopping"></i>            
             </button>
-            </div>
-        <div id="rate">
-            <i class="fa-solid fa-star"></i>            
-            <span>${product.rating.rate}</span>
-        </div>
-        <div id="rate">
-            <i class="fa-solid fa-user"></i>            
-            <span>${product.rating.count}</span>
-        </div>
-
+      </div>
+      <div id="rate">
+        <i class="fa-solid fa-star"></i>            
+        <span>${product.rating.rate}</span>
+      </div>
+      <div id="count">
+        <i class="fa-solid fa-user"></i>            
+        <span>${product.rating.count}</span>
+      </div>
     </div>
     `;
 
@@ -58,9 +58,8 @@ const init = async () => {
 };
 
 const filterProducts = () => {
-  const filteredProducts = null;
-  filterProducts = allProducts.filter((product) => {
-    if (cate === "all") {
+  const filteredProducts = allProducts.filter((product) => {
+    if (category === "all") {
       return product.title.toLowerCase().includes(search);
     } else {
       return (
@@ -70,22 +69,22 @@ const filterProducts = () => {
     }
   });
 
-  renderProducts(filterProducts);
+  renderProducts(filteredProducts);
 };
 
 const searchHandler = () => {
   search = inputBox.value.trim().toLowerCase();
-
   filterProducts();
 };
 
 const filterHandler = (e) => {
   category = e.target.innerText.toLowerCase();
-  listItem.forEach((li) => {
+  
+  listItems.forEach((li) => {
     if (li.innerText.toLowerCase() === category) {
       li.className = "selected";
     } else {
-      li.classList = "";
+      li.className = "";
     }
   });
 
@@ -94,4 +93,4 @@ const filterHandler = (e) => {
 
 document.addEventListener("DOMContentLoaded", init);
 searchButton.addEventListener("click", searchHandler);
-listItem.forEach((li) => li.addEventListener("click"), filterHandler);
+listItems.forEach((li) => li.addEventListener("click", filterHandler));
