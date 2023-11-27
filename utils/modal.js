@@ -1,5 +1,5 @@
 const modal = document.getElementById("modal");
-const modalText = document.querySelector("p");
+const modalText = document.getElementById("modal-p");
 
 const showModal = (text) => {
   modalText.innerText = text;

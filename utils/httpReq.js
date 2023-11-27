@@ -13,8 +13,8 @@ const postData = async (path, data) => {
     const json = await response.json();
     return json;
   } catch (error) {
-    // showModal("an error occurred");
-    alert("an error occurred");
+    showModal("an error occurred");
+    // alert("an error occurred");
   }
 };
 
@@ -24,7 +24,8 @@ const getData = async (path) => {
     const json = await response.json();
     return json;
   } catch (error) {
-    alert("an error occurred");
+    showModal("an error occurred");
+    // alert("an error occurred");
   }
 };
 
