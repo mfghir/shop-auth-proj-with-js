@@ -10,6 +10,7 @@ const mainContent = document.getElementById("products");
 
 const searchButton = document.querySelector("button");
 const inputBox = document.querySelector("input");
+const listItem = document.querySelectorAll("li");
 
 const showProducts = (products) => {
   mainContent.innerHTML = "";
@@ -64,5 +65,24 @@ const searchHandler = () => {
   showProducts(filterProducts);
 };
 
+const filterHandler = (e) => {
+  const category = e.target.innerText.toLowerCase();
+  listItem.forEach((li) => {
+    if (li.innerText.toLowerCase() === category) {
+      li.className = "selected";
+    } else {
+      li.classList = "";
+    }
+  });
+
+  if (category === "all") return showProducts(allProducts);
+  const filteredProducts = allProducts.filter((product) => {
+    product.category.toLowerCase() === category;
+  });
+
+  showProducts(filteredProducts);
+};
+
 document.addEventListener("DOMContentLoaded", init);
 searchButton.addEventListener("click", searchHandler);
+listItem.forEach((li) => li.addEventListener("click"), filterHandler);
